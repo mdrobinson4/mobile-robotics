@@ -1,5 +1,9 @@
 # mobile-robotics
  Implementation of mobile robotic algorithms; ranging from kalman filters to active exploration
- filtering/state estimation
- local and global path planning
- trajectory generation
+- [x] Filtering/ State estimation
+- [ ] Local and global path planning
+- [ ] Trajectory generation
+- [ ] Visual Odometry
+ 
+ 
+ 
