@@ -1,6 +1,6 @@
 # mobile-robotics
  Implementation of mobile robotic algorithms; ranging from kalman filters to active exploration
-- [] Filtering
+- [ ] Filtering
   - [x] Kalman Filter
   - [x] Extended Kalman Filter
 - [ ] Global path planning
