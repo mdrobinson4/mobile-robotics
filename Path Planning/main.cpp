@@ -13,7 +13,7 @@ using namespace std;
 
 int main() {
     int n = 1000;
-    int k = 3;
+    int k = 10;
     PRM *prm = new PRM("map3.jpg", n, k);
     prm->roadmapConstruction();
     return 0;

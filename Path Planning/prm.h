@@ -33,8 +33,10 @@ private:
     vector<pair<int, float>> *graph;
 public:
     PRM(string, int, int);
-    vector<Eigen::Vector2d> nearestNeighbors(Eigen::Vector2d q);
+    vector<pair<int, float>> nearestNeighbors(Eigen::Vector2d q);
     bool checkCollision(Eigen::Vector2d q);
+    bool checkCollision(Eigen::Vector2d a, Eigen::Vector2d b);
+    bool checkDuplicateEdge(int u, int v);
     void roadmapConstruction();
     ~PRM();
 };
