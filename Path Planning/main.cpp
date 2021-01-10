@@ -12,9 +12,20 @@
 using namespace std;
 
 int main() {
-    int n = 1000;
+    int n = 100;
     int k = 10;
-    PRM *prm = new PRM("map3.jpg", n, k);
-    prm->roadmapConstruction();
+
+    cv::Mat input_image = cv::imread("map3.jpg");
+    Eigen::Vector3d q_init(203, 430, 0);
+    Eigen::Vector3d q_goal(1306, 69, 0);
+
+    PRM *prm = new PRM(input_image, n, k);
+    prm->constructRoadmap();
+
+    prm->setCoords(q_init, q_goal);
+    prm->drawMap();
+    prm->clearRoadmap();
+    prm->setCoords(Eigen::Vector3d(42, 531, 0), Eigen::Vector3d(1310, 752, 0));
+    prm->drawMap();
     return 0;
 }

@@ -7,17 +7,24 @@
 #include<opencv2/opencv.hpp>
 #include <opencv2/imgproc.hpp>
 
+#include <Eigen/Geometry>
+#include <Eigen/Dense>
+#include <Eigen/Core>
+
 using namespace std;
 
 class MAP
 {
 private:
-    cv::Mat input;
+    cv::Mat input_image;
     cv::Mat modInput;
 public:
     MAP(cv::Mat input);
+    void clear();
     int getCell(int u, int v);
-    void updateMap(int u, int v);
-    void updateMap(int, int, int, int);
+    void updateMap(Eigen::Vector3d, Eigen::Vector3d);
+    void updateMap(Eigen::Vector3d);
+    bool checkCollision(Eigen::Vector3d);
+    bool checkCollision(Eigen::Vector3d, Eigen::Vector3d);
     ~MAP();
 };

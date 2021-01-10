@@ -57,6 +57,12 @@ opencv2/opencv.hpp
 -
 opencv2/imgproc.hpp
 -
+Eigen/Geometry
+-
+Eigen/Dense
+-
+Eigen/Core
+-
 
 /home/mialbro/Desktop/mobile-robotics/Path Planning/prm.cpp
 iostream

@@ -26,17 +26,29 @@ class PRM
 private:
     int n; // number of nodes to put in roadmap
     int k; // number of closest neighbors to examine for each configuration
-    Eigen::Vector2d *V;
+    Eigen::Vector3d *V;
     int width;
     int height;
+    int vector_cnt;
+    int init_idx;
+    int goal_idx;
+    cv::Mat input_image;
     MAP *map;
     vector<pair<int, float>> *graph;
 public:
     PRM(string, int, int);
-    vector<pair<int, float>> nearestNeighbors(Eigen::Vector2d q);
-    bool checkCollision(Eigen::Vector2d q);
-    bool checkCollision(Eigen::Vector2d a, Eigen::Vector2d b);
+    PRM(cv::Mat, int, int);
+    void clearRoadmap();
+    void drawMap();
+    void setCoords(Eigen::Vector3d q_init, Eigen::Vector3d q_goal);
+    int addNode(Eigen::Vector3d q_new);
+    void removeNode(int);
+    void addEdge(int u_idx, int v_idx, float weight);
+    void connectNodes(Eigen::Vector3d q_init, Eigen::Vector3d q_goal);
+    vector<pair<int, float>> nearestNeighbors(Eigen::Vector3d q);
     bool checkDuplicateEdge(int u, int v);
-    void roadmapConstruction();
+    bool checkDuplicateEdge(Eigen::Vector3d);
+    bool bresenham(int x1, int y1, int x2, int y2);
+    void constructRoadmap();
     ~PRM();
 };
