@@ -3,67 +3,55 @@
 #include <unordered_map>
 #include <queue>
 #include <unordered_set>
+#include <inttypes.h>
+#include <limits>
+
+#include "dijkstra.h"
 
 using namespace std;
 
-struct Graph {
-    std::unordered_map<char, std::vector<char>> edges;
+stack<int> Dijkstra::findPath(int init, int goal, int cnt, vector<pair<int, float>> graph[]) {
+    priority_queue<pair<float, int>, vector<pair<float, int>>, greater<pair<float, int>>> pq;
+    vector<double> dist(cnt);
+    vector<int> prev(cnt);
+    stack<int> path;
 
-    std::vector<char> neighbors(char id) {
-        return edges[id];
+    vector<bool> done(cnt, false);
+    
+    for (int i = 0; i < cnt; i++) {
+        dist[i] = numeric_limits<float>::max();
+        prev[i] = -1;
     }
-};
 
-struct GridLocation {
-    int x, y;
-};
+    pq.push(make_pair(0, init));
+    dist[init] = 0;
 
-namespace std {
-    template <> struct hash<GridLocation> {
-        typedef GridLocation argument_type;
-        typedef std::size_t result_type;
-        std::size_t operator()(const GridLocation& id) const nexcept {
-            return std::hash<int>()(id.x ^ (id.y << 4));
-        }
-    };
-}
+    while (!pq.empty()) {
+        int u = pq.top().second;
+        pq.pop();
 
-struct SquareGrid {
-    static 
-}
+        if (u == goal) {
+            cout << "found goal" << endl;
 
-void bfs(Graph graph, char start) {
-    std::queue<char> frontier;
-    frontier.push(start);
-
-    std::unordered_set<char> reached;
-    reached.insert(start);
-
-    while (!frontier.empty()) {
-        char current = frontier.front();
-        frontier.pop();
-
-        std::cout << "Visiting " << current << '\n';
-        for (char next : graph.neighbors(current)) {
-            if (reached.find(next) == reached.end()) {
-                frontier.push(next);
-                reached.insert(next);
+            while (u != -1) {
+                path.push(u); 
+                u = prev[u]; 
             }
+            return path;
         }
-    }
-}
 
-int main() {
-    Graph graph {{
-        {'A', {'B'}},
-        {'B', {'C'}},
-        {'C', {'B', 'D', 'F'}},
-        {'D', {'C', 'E'}},
-        {'E', {'F'}},
-        {'F', {}},
-    }};
-    std::cout << "Reachable from A: \n";
-    bfs(graph, 'A');
-    std::cout << "Reachable from E:\n";
-    bfs(graph, 'E');
+        vector<pair<int, float>>::iterator it;
+        for (it = graph[u].begin(); it != graph[u].end(); it++) {
+            int v = (*it).first;
+            float weight = (*it).second;
+            if (dist[v] > dist[u] + weight) {
+                dist[v] = dist[u] + weight;
+                prev[v] = u;
+                pq.push(make_pair(dist[v], v));
+            }
+            
+        }
+        done[u] == true;
+    }
+    return stack<int> ();
 }

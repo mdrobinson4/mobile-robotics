@@ -123,6 +123,33 @@ prm/fast:
 	$(MAKE) -f CMakeFiles/prm.dir/build.make CMakeFiles/prm.dir/build
 .PHONY : prm/fast
 
+dijkstra.o: dijkstra.cpp.o
+
+.PHONY : dijkstra.o
+
+# target to build an object file
+dijkstra.cpp.o:
+	$(MAKE) -f CMakeFiles/prm.dir/build.make CMakeFiles/prm.dir/dijkstra.cpp.o
+.PHONY : dijkstra.cpp.o
+
+dijkstra.i: dijkstra.cpp.i
+
+.PHONY : dijkstra.i
+
+# target to preprocess a source file
+dijkstra.cpp.i:
+	$(MAKE) -f CMakeFiles/prm.dir/build.make CMakeFiles/prm.dir/dijkstra.cpp.i
+.PHONY : dijkstra.cpp.i
+
+dijkstra.s: dijkstra.cpp.s
+
+.PHONY : dijkstra.s
+
+# target to generate assembly for a file
+dijkstra.cpp.s:
+	$(MAKE) -f CMakeFiles/prm.dir/build.make CMakeFiles/prm.dir/dijkstra.cpp.s
+.PHONY : dijkstra.cpp.s
+
 main.o: main.cpp.o
 
 .PHONY : main.o
@@ -213,6 +240,9 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... prm"
 	@echo "... edit_cache"
+	@echo "... dijkstra.o"
+	@echo "... dijkstra.i"
+	@echo "... dijkstra.s"
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"

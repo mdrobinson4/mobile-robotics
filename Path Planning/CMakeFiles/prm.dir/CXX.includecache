@@ -6,6 +6,44 @@
 
 #IncludeRegexTransform: 
 
+/home/mialbro/Desktop/mobile-robotics/Path Planning/dijkstra.cpp
+iostream
+-
+vector
+-
+unordered_map
+-
+queue
+-
+unordered_set
+-
+inttypes.h
+-
+limits
+-
+dijkstra.h
+/home/mialbro/Desktop/mobile-robotics/Path Planning/dijkstra.h
+
+/home/mialbro/Desktop/mobile-robotics/Path Planning/dijkstra.h
+iostream
+-
+vector
+-
+unordered_map
+-
+queue
+-
+unordered_set
+-
+stack
+-
+Eigen/Geometry
+-
+Eigen/Dense
+-
+Eigen/Core
+-
+
 /home/mialbro/Desktop/mobile-robotics/Path Planning/main.cpp
 iostream
 -
@@ -97,6 +135,8 @@ unordered_set
 -
 utility
 -
+stack
+-
 opencv2/opencv.hpp
 -
 opencv2/imgproc.hpp
@@ -109,6 +149,8 @@ Eigen/Core
 -
 map.h
 /home/mialbro/Desktop/mobile-robotics/Path Planning/map.h
+dijkstra.h
+/home/mialbro/Desktop/mobile-robotics/Path Planning/dijkstra.h
 
 /home/mialbro/opencv_build/opencv/build/cv_cpu_config.h
 

@@ -1,6 +1,7 @@
 file(REMOVE_RECURSE
   "CMakeFiles/prm.dir/prm.cpp.o"
   "CMakeFiles/prm.dir/map.cpp.o"
+  "CMakeFiles/prm.dir/dijkstra.cpp.o"
   "CMakeFiles/prm.dir/main.cpp.o"
   "prm.pdb"
   "prm"

@@ -12,7 +12,7 @@
 using namespace std;
 
 int main() {
-    int n = 100;
+    int n = 2000;
     int k = 10;
 
     cv::Mat input_image = cv::imread("map3.jpg");
@@ -21,11 +21,13 @@ int main() {
 
     PRM *prm = new PRM(input_image, n, k);
     prm->constructRoadmap();
-
     prm->setCoords(q_init, q_goal);
     prm->drawMap();
-    prm->clearRoadmap();
-    prm->setCoords(Eigen::Vector3d(42, 531, 0), Eigen::Vector3d(1310, 752, 0));
+    prm->search();
+    
+    prm->clearCoords();
+    prm->setCoords(Eigen::Vector3d(203, 430, 0), Eigen::Vector3d(310, 42, 0));
     prm->drawMap();
+    prm->search();
     return 0;
 }
