@@ -1,5 +1,6 @@
+project(MR)
+
 cmake_minimum_required(VERSION 2.8)
-project(path_planning)
 
 set(OpenCV_DIR ~/opencv_build/opencv/build/)
 
@@ -16,10 +17,7 @@ include_directories(
     ${OpenCV_INCLUDE_DIRS}
     ${EIGEN3_INCLUDE_DIR}
     )
-
-# The following folder will be included
-include_directories("${PROJECT_SOURCE_DIR}")
-
-add_executable(path_planning prm.cpp map.cpp dijkstra.cpp astar.cpp bfs.cpp dfs.cpp main.cpp)
-
-target_link_libraries(path_planning ${OpenCV_LIBS})
+set (CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR})
+add_subdirectory(path_planning)
+add_subdirectory(roadmaps)
+add_subdirectory(graph_search)
