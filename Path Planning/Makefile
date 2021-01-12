@@ -123,32 +123,86 @@ prm/fast:
 	$(MAKE) -f CMakeFiles/prm.dir/build.make CMakeFiles/prm.dir/build
 .PHONY : prm/fast
 
-a_star.o: a_star.cpp.o
+astar.o: astar.cpp.o
 
-.PHONY : a_star.o
+.PHONY : astar.o
 
 # target to build an object file
-a_star.cpp.o:
-	$(MAKE) -f CMakeFiles/prm.dir/build.make CMakeFiles/prm.dir/a_star.cpp.o
-.PHONY : a_star.cpp.o
+astar.cpp.o:
+	$(MAKE) -f CMakeFiles/prm.dir/build.make CMakeFiles/prm.dir/astar.cpp.o
+.PHONY : astar.cpp.o
 
-a_star.i: a_star.cpp.i
+astar.i: astar.cpp.i
 
-.PHONY : a_star.i
+.PHONY : astar.i
 
 # target to preprocess a source file
-a_star.cpp.i:
-	$(MAKE) -f CMakeFiles/prm.dir/build.make CMakeFiles/prm.dir/a_star.cpp.i
-.PHONY : a_star.cpp.i
+astar.cpp.i:
+	$(MAKE) -f CMakeFiles/prm.dir/build.make CMakeFiles/prm.dir/astar.cpp.i
+.PHONY : astar.cpp.i
 
-a_star.s: a_star.cpp.s
+astar.s: astar.cpp.s
 
-.PHONY : a_star.s
+.PHONY : astar.s
 
 # target to generate assembly for a file
-a_star.cpp.s:
-	$(MAKE) -f CMakeFiles/prm.dir/build.make CMakeFiles/prm.dir/a_star.cpp.s
-.PHONY : a_star.cpp.s
+astar.cpp.s:
+	$(MAKE) -f CMakeFiles/prm.dir/build.make CMakeFiles/prm.dir/astar.cpp.s
+.PHONY : astar.cpp.s
+
+bfs.o: bfs.cpp.o
+
+.PHONY : bfs.o
+
+# target to build an object file
+bfs.cpp.o:
+	$(MAKE) -f CMakeFiles/prm.dir/build.make CMakeFiles/prm.dir/bfs.cpp.o
+.PHONY : bfs.cpp.o
+
+bfs.i: bfs.cpp.i
+
+.PHONY : bfs.i
+
+# target to preprocess a source file
+bfs.cpp.i:
+	$(MAKE) -f CMakeFiles/prm.dir/build.make CMakeFiles/prm.dir/bfs.cpp.i
+.PHONY : bfs.cpp.i
+
+bfs.s: bfs.cpp.s
+
+.PHONY : bfs.s
+
+# target to generate assembly for a file
+bfs.cpp.s:
+	$(MAKE) -f CMakeFiles/prm.dir/build.make CMakeFiles/prm.dir/bfs.cpp.s
+.PHONY : bfs.cpp.s
+
+dfs.o: dfs.cpp.o
+
+.PHONY : dfs.o
+
+# target to build an object file
+dfs.cpp.o:
+	$(MAKE) -f CMakeFiles/prm.dir/build.make CMakeFiles/prm.dir/dfs.cpp.o
+.PHONY : dfs.cpp.o
+
+dfs.i: dfs.cpp.i
+
+.PHONY : dfs.i
+
+# target to preprocess a source file
+dfs.cpp.i:
+	$(MAKE) -f CMakeFiles/prm.dir/build.make CMakeFiles/prm.dir/dfs.cpp.i
+.PHONY : dfs.cpp.i
+
+dfs.s: dfs.cpp.s
+
+.PHONY : dfs.s
+
+# target to generate assembly for a file
+dfs.cpp.s:
+	$(MAKE) -f CMakeFiles/prm.dir/build.make CMakeFiles/prm.dir/dfs.cpp.s
+.PHONY : dfs.cpp.s
 
 dijkstra.o: dijkstra.cpp.o
 
@@ -267,9 +321,15 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... prm"
 	@echo "... edit_cache"
-	@echo "... a_star.o"
-	@echo "... a_star.i"
-	@echo "... a_star.s"
+	@echo "... astar.o"
+	@echo "... astar.i"
+	@echo "... astar.s"
+	@echo "... bfs.o"
+	@echo "... bfs.i"
+	@echo "... bfs.s"
+	@echo "... dfs.o"
+	@echo "... dfs.i"
+	@echo "... dfs.s"
 	@echo "... dijkstra.o"
 	@echo "... dijkstra.i"
 	@echo "... dijkstra.s"

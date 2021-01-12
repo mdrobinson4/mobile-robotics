@@ -129,33 +129,81 @@ CMakeFiles/prm.dir/dijkstra.cpp.o.provides: CMakeFiles/prm.dir/dijkstra.cpp.o.re
 CMakeFiles/prm.dir/dijkstra.cpp.o.provides.build: CMakeFiles/prm.dir/dijkstra.cpp.o
 
 
-CMakeFiles/prm.dir/a_star.cpp.o: CMakeFiles/prm.dir/flags.make
-CMakeFiles/prm.dir/a_star.cpp.o: a_star.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/home/mialbro/Desktop/mobile-robotics/Path Planning/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/prm.dir/a_star.cpp.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/prm.dir/a_star.cpp.o -c "/home/mialbro/Desktop/mobile-robotics/Path Planning/a_star.cpp"
+CMakeFiles/prm.dir/astar.cpp.o: CMakeFiles/prm.dir/flags.make
+CMakeFiles/prm.dir/astar.cpp.o: astar.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/home/mialbro/Desktop/mobile-robotics/Path Planning/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/prm.dir/astar.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/prm.dir/astar.cpp.o -c "/home/mialbro/Desktop/mobile-robotics/Path Planning/astar.cpp"
 
-CMakeFiles/prm.dir/a_star.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/prm.dir/a_star.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/home/mialbro/Desktop/mobile-robotics/Path Planning/a_star.cpp" > CMakeFiles/prm.dir/a_star.cpp.i
+CMakeFiles/prm.dir/astar.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/prm.dir/astar.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/home/mialbro/Desktop/mobile-robotics/Path Planning/astar.cpp" > CMakeFiles/prm.dir/astar.cpp.i
 
-CMakeFiles/prm.dir/a_star.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/prm.dir/a_star.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/home/mialbro/Desktop/mobile-robotics/Path Planning/a_star.cpp" -o CMakeFiles/prm.dir/a_star.cpp.s
+CMakeFiles/prm.dir/astar.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/prm.dir/astar.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/home/mialbro/Desktop/mobile-robotics/Path Planning/astar.cpp" -o CMakeFiles/prm.dir/astar.cpp.s
 
-CMakeFiles/prm.dir/a_star.cpp.o.requires:
+CMakeFiles/prm.dir/astar.cpp.o.requires:
 
-.PHONY : CMakeFiles/prm.dir/a_star.cpp.o.requires
+.PHONY : CMakeFiles/prm.dir/astar.cpp.o.requires
 
-CMakeFiles/prm.dir/a_star.cpp.o.provides: CMakeFiles/prm.dir/a_star.cpp.o.requires
-	$(MAKE) -f CMakeFiles/prm.dir/build.make CMakeFiles/prm.dir/a_star.cpp.o.provides.build
-.PHONY : CMakeFiles/prm.dir/a_star.cpp.o.provides
+CMakeFiles/prm.dir/astar.cpp.o.provides: CMakeFiles/prm.dir/astar.cpp.o.requires
+	$(MAKE) -f CMakeFiles/prm.dir/build.make CMakeFiles/prm.dir/astar.cpp.o.provides.build
+.PHONY : CMakeFiles/prm.dir/astar.cpp.o.provides
 
-CMakeFiles/prm.dir/a_star.cpp.o.provides.build: CMakeFiles/prm.dir/a_star.cpp.o
+CMakeFiles/prm.dir/astar.cpp.o.provides.build: CMakeFiles/prm.dir/astar.cpp.o
+
+
+CMakeFiles/prm.dir/bfs.cpp.o: CMakeFiles/prm.dir/flags.make
+CMakeFiles/prm.dir/bfs.cpp.o: bfs.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/home/mialbro/Desktop/mobile-robotics/Path Planning/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/prm.dir/bfs.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/prm.dir/bfs.cpp.o -c "/home/mialbro/Desktop/mobile-robotics/Path Planning/bfs.cpp"
+
+CMakeFiles/prm.dir/bfs.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/prm.dir/bfs.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/home/mialbro/Desktop/mobile-robotics/Path Planning/bfs.cpp" > CMakeFiles/prm.dir/bfs.cpp.i
+
+CMakeFiles/prm.dir/bfs.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/prm.dir/bfs.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/home/mialbro/Desktop/mobile-robotics/Path Planning/bfs.cpp" -o CMakeFiles/prm.dir/bfs.cpp.s
+
+CMakeFiles/prm.dir/bfs.cpp.o.requires:
+
+.PHONY : CMakeFiles/prm.dir/bfs.cpp.o.requires
+
+CMakeFiles/prm.dir/bfs.cpp.o.provides: CMakeFiles/prm.dir/bfs.cpp.o.requires
+	$(MAKE) -f CMakeFiles/prm.dir/build.make CMakeFiles/prm.dir/bfs.cpp.o.provides.build
+.PHONY : CMakeFiles/prm.dir/bfs.cpp.o.provides
+
+CMakeFiles/prm.dir/bfs.cpp.o.provides.build: CMakeFiles/prm.dir/bfs.cpp.o
+
+
+CMakeFiles/prm.dir/dfs.cpp.o: CMakeFiles/prm.dir/flags.make
+CMakeFiles/prm.dir/dfs.cpp.o: dfs.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/home/mialbro/Desktop/mobile-robotics/Path Planning/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/prm.dir/dfs.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/prm.dir/dfs.cpp.o -c "/home/mialbro/Desktop/mobile-robotics/Path Planning/dfs.cpp"
+
+CMakeFiles/prm.dir/dfs.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/prm.dir/dfs.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/home/mialbro/Desktop/mobile-robotics/Path Planning/dfs.cpp" > CMakeFiles/prm.dir/dfs.cpp.i
+
+CMakeFiles/prm.dir/dfs.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/prm.dir/dfs.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/home/mialbro/Desktop/mobile-robotics/Path Planning/dfs.cpp" -o CMakeFiles/prm.dir/dfs.cpp.s
+
+CMakeFiles/prm.dir/dfs.cpp.o.requires:
+
+.PHONY : CMakeFiles/prm.dir/dfs.cpp.o.requires
+
+CMakeFiles/prm.dir/dfs.cpp.o.provides: CMakeFiles/prm.dir/dfs.cpp.o.requires
+	$(MAKE) -f CMakeFiles/prm.dir/build.make CMakeFiles/prm.dir/dfs.cpp.o.provides.build
+.PHONY : CMakeFiles/prm.dir/dfs.cpp.o.provides
+
+CMakeFiles/prm.dir/dfs.cpp.o.provides.build: CMakeFiles/prm.dir/dfs.cpp.o
 
 
 CMakeFiles/prm.dir/main.cpp.o: CMakeFiles/prm.dir/flags.make
 CMakeFiles/prm.dir/main.cpp.o: main.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/home/mialbro/Desktop/mobile-robotics/Path Planning/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/prm.dir/main.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/home/mialbro/Desktop/mobile-robotics/Path Planning/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/prm.dir/main.cpp.o"
 	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/prm.dir/main.cpp.o -c "/home/mialbro/Desktop/mobile-robotics/Path Planning/main.cpp"
 
 CMakeFiles/prm.dir/main.cpp.i: cmake_force
@@ -182,7 +230,9 @@ prm_OBJECTS = \
 "CMakeFiles/prm.dir/prm.cpp.o" \
 "CMakeFiles/prm.dir/map.cpp.o" \
 "CMakeFiles/prm.dir/dijkstra.cpp.o" \
-"CMakeFiles/prm.dir/a_star.cpp.o" \
+"CMakeFiles/prm.dir/astar.cpp.o" \
+"CMakeFiles/prm.dir/bfs.cpp.o" \
+"CMakeFiles/prm.dir/dfs.cpp.o" \
 "CMakeFiles/prm.dir/main.cpp.o"
 
 # External object files for target prm
@@ -191,7 +241,9 @@ prm_EXTERNAL_OBJECTS =
 prm: CMakeFiles/prm.dir/prm.cpp.o
 prm: CMakeFiles/prm.dir/map.cpp.o
 prm: CMakeFiles/prm.dir/dijkstra.cpp.o
-prm: CMakeFiles/prm.dir/a_star.cpp.o
+prm: CMakeFiles/prm.dir/astar.cpp.o
+prm: CMakeFiles/prm.dir/bfs.cpp.o
+prm: CMakeFiles/prm.dir/dfs.cpp.o
 prm: CMakeFiles/prm.dir/main.cpp.o
 prm: CMakeFiles/prm.dir/build.make
 prm: /home/mialbro/opencv_build/opencv/build/lib/libopencv_gapi.so.4.5.1
@@ -249,7 +301,7 @@ prm: /home/mialbro/opencv_build/opencv/build/lib/libopencv_photo.so.4.5.1
 prm: /home/mialbro/opencv_build/opencv/build/lib/libopencv_imgproc.so.4.5.1
 prm: /home/mialbro/opencv_build/opencv/build/lib/libopencv_core.so.4.5.1
 prm: CMakeFiles/prm.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir="/home/mialbro/Desktop/mobile-robotics/Path Planning/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_6) "Linking CXX executable prm"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir="/home/mialbro/Desktop/mobile-robotics/Path Planning/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_8) "Linking CXX executable prm"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/prm.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
@@ -260,7 +312,9 @@ CMakeFiles/prm.dir/build: prm
 CMakeFiles/prm.dir/requires: CMakeFiles/prm.dir/prm.cpp.o.requires
 CMakeFiles/prm.dir/requires: CMakeFiles/prm.dir/map.cpp.o.requires
 CMakeFiles/prm.dir/requires: CMakeFiles/prm.dir/dijkstra.cpp.o.requires
-CMakeFiles/prm.dir/requires: CMakeFiles/prm.dir/a_star.cpp.o.requires
+CMakeFiles/prm.dir/requires: CMakeFiles/prm.dir/astar.cpp.o.requires
+CMakeFiles/prm.dir/requires: CMakeFiles/prm.dir/bfs.cpp.o.requires
+CMakeFiles/prm.dir/requires: CMakeFiles/prm.dir/dfs.cpp.o.requires
 CMakeFiles/prm.dir/requires: CMakeFiles/prm.dir/main.cpp.o.requires
 
 .PHONY : CMakeFiles/prm.dir/requires

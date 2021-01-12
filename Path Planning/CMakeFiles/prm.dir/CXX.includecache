@@ -6,7 +6,7 @@
 
 #IncludeRegexTransform: 
 
-/home/mialbro/Desktop/mobile-robotics/Path Planning/a_star.cpp
+/home/mialbro/Desktop/mobile-robotics/Path Planning/astar.cpp
 iostream
 -
 vector
@@ -21,10 +21,86 @@ inttypes.h
 -
 limits
 -
-a_star.h
-/home/mialbro/Desktop/mobile-robotics/Path Planning/a_star.h
+astar.h
+/home/mialbro/Desktop/mobile-robotics/Path Planning/astar.h
 
-/home/mialbro/Desktop/mobile-robotics/Path Planning/a_star.h
+/home/mialbro/Desktop/mobile-robotics/Path Planning/astar.h
+iostream
+-
+vector
+-
+unordered_map
+-
+queue
+-
+unordered_set
+-
+stack
+-
+Eigen/Geometry
+-
+Eigen/Dense
+-
+Eigen/Core
+-
+
+/home/mialbro/Desktop/mobile-robotics/Path Planning/bfs.cpp
+iostream
+-
+vector
+-
+unordered_map
+-
+queue
+-
+unordered_set
+-
+inttypes.h
+-
+limits
+-
+bfs.h
+/home/mialbro/Desktop/mobile-robotics/Path Planning/bfs.h
+
+/home/mialbro/Desktop/mobile-robotics/Path Planning/bfs.h
+iostream
+-
+vector
+-
+unordered_map
+-
+queue
+-
+unordered_set
+-
+stack
+-
+Eigen/Geometry
+-
+Eigen/Dense
+-
+Eigen/Core
+-
+
+/home/mialbro/Desktop/mobile-robotics/Path Planning/dfs.cpp
+iostream
+-
+vector
+-
+unordered_map
+-
+queue
+-
+unordered_set
+-
+inttypes.h
+-
+limits
+-
+dfs.h
+/home/mialbro/Desktop/mobile-robotics/Path Planning/dfs.h
+
+/home/mialbro/Desktop/mobile-robotics/Path Planning/dfs.h
 iostream
 -
 vector
@@ -189,8 +265,12 @@ map.h
 /home/mialbro/Desktop/mobile-robotics/Path Planning/map.h
 dijkstra.h
 /home/mialbro/Desktop/mobile-robotics/Path Planning/dijkstra.h
-a_star.h
-/home/mialbro/Desktop/mobile-robotics/Path Planning/a_star.h
+astar.h
+/home/mialbro/Desktop/mobile-robotics/Path Planning/astar.h
+bfs.h
+/home/mialbro/Desktop/mobile-robotics/Path Planning/bfs.h
+dfs.h
+/home/mialbro/Desktop/mobile-robotics/Path Planning/dfs.h
 
 /home/mialbro/opencv_build/opencv/build/cv_cpu_config.h
 

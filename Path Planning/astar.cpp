@@ -6,20 +6,20 @@
 #include <inttypes.h>
 #include <limits>
 
-#include "a_star.h"
+#include "astar.h"
 
 using namespace std;
 
 typedef priority_queue<pair<double, int>, vector<pair<double, int>>, greater<pair<double, int>>> MIN_QUEUE;
 
 ASTAR::ASTAR() {
-    visited_nodes.reserve(1);
+    //visited_nodes.reserve(1);
     return;
 }
 
 stack<int> ASTAR::findPath(int init, int goal, int cnt, Eigen::Vector3d V[], vector<pair<int, double>> graph[]) {
     MIN_QUEUE open_set;
-    vector<int> closed_set(cnt);
+    vector<bool> closed_set(cnt, false);
     vector<int> came_from(cnt);
     vector<double> g_score(cnt, numeric_limits<double>::max());
     vector<double> f_score(cnt, numeric_limits<double>::max());
@@ -36,15 +36,15 @@ stack<int> ASTAR::findPath(int init, int goal, int cnt, Eigen::Vector3d V[], vec
         }
         for (std::vector<pair<int, double>>::iterator it = graph[current].begin() ; it != graph[current].end(); ++it) {
             pair<int, double> neighbor = *it;
+            int neighbor_id = neighbor.first;
             double new_score = g_score[current] + neighbor.second;
-            if (new_score < g_score[neighbor.first]) {
-                came_from[neighbor.first] = current;
-                g_score[neighbor.first] = new_score;
-                f_score[neighbor.first] = g_score[neighbor.first] + heuristic(V[neighbor.first], V[goal]);
-                if (!find(neighbor.first)) {
-                    cout << neighbor.first << endl;
-                    open_set.push(make_pair(f_score[neighbor.first], neighbor.second));
-                    visited_nodes.push_back(neighbor.first);
+            if (new_score < g_score[neighbor_id]) {
+                came_from[neighbor_id] = current;
+                g_score[neighbor_id] = new_score;
+                f_score[neighbor_id] = g_score[neighbor_id] + heuristic(V[neighbor_id], V[goal]);
+                if (closed_set[neighbor_id] == false) {
+                    open_set.push(make_pair(f_score[neighbor_id], neighbor_id));
+                    closed_set[neighbor_id] = true;
                 }
             }
         }
@@ -68,18 +68,4 @@ stack<int> ASTAR::reconstructPath(vector<int> came_from, int current, int init) 
         path.push(current);
     }
     return path;
-}
-
-bool ASTAR::find(int neighbor) {
-    vector<int>::iterator it;
-    if (visited_nodes.size() == 0) {
-        cout << "neighbor.first" << endl;
-        return false;
-    }
-    it = std::find(visited_nodes.begin(), visited_nodes.end(), neighbor);
-
-    if (it != visited_nodes.end()) {
-        return true;
-    }
-    return false;
 }

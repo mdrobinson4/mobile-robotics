@@ -25,13 +25,18 @@ PRM::PRM(cv::Mat input_image, int n_, int k_) {
 
     V = new Eigen::Vector3d[n + 2];
     graph = new vector<pair<int, double>>[n + 2];
+
     dijkstra = new Dijkstra();
     astar = new ASTAR();
+    bfs = new BFS();
+    dfs = new DFS();
 }
 
 void PRM::search() {
     //stack<int> path = dijkstra->findPath(init_idx, goal_idx, vector_cnt, graph);
-    stack<int> path = astar->findPath(init_idx, goal_idx, vector_cnt, V, graph);
+    //stack<int> path = astar->findPath(init_idx, goal_idx, vector_cnt, V, graph);
+    //stack<int> path = bfs->findPath(init_idx, goal_idx, vector_cnt, graph);
+    stack<int> path = dfs->findPath(init_idx, goal_idx, vector_cnt, graph);
     if (path.empty())
         return;
 

@@ -17,5 +17,5 @@ include_directories(
     ${EIGEN3_INCLUDE_DIR}
     )
 
-add_executable(prm prm.cpp map.cpp dijkstra.cpp a_star.cpp main.cpp)
+add_executable(prm prm.cpp map.cpp dijkstra.cpp astar.cpp bfs.cpp dfs.cpp main.cpp)
 target_link_libraries(prm ${OpenCV_LIBS})

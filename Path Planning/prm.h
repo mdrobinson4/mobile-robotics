@@ -15,7 +15,9 @@
 
 #include "map.h"
 #include "dijkstra.h"
-#include "a_star.h"
+#include "astar.h"
+#include "bfs.h"
+#include "dfs.h"
 
 using namespace std;
 
@@ -25,6 +27,8 @@ class PRM {
 private:
     class Dijkstra *dijkstra;
     class ASTAR *astar;
+    class BFS *bfs;
+    class DFS *dfs;
     int n; // number of nodes to put in roadmap
     int k; // number of closest neighbors to examine for each configuration
     MAP *map;

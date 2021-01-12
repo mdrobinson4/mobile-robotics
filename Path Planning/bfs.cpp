@@ -3,67 +3,55 @@
 #include <unordered_map>
 #include <queue>
 #include <unordered_set>
+#include <inttypes.h>
+#include <limits>
+
+#include "bfs.h"
 
 using namespace std;
 
-struct Graph {
-    std::unordered_map<char, std::vector<char>> edges;
+BFS::BFS() {
+    //visited_nodes.reserve(1);
+    return;
+}
 
-    std::vector<char> neighbors(char id) {
-        return edges[id];
-    }
-};
+stack<int> BFS::findPath(int init, int goal, int cnt, vector<pair<int, double>> graph[]) {
+    queue<int> open_set;
+    vector<bool> closed_set(cnt, false);
+    vector<int> came_from(cnt);
 
-struct GridLocation {
-    int x, y;
-};
+    open_set.push(init);
+    closed_set[init] = true;
 
-namespace std {
-    template <> struct hash<GridLocation> {
-        typedef GridLocation argument_type;
-        typedef std::size_t result_type;
-        std::size_t operator()(const GridLocation& id) const nexcept {
-            return std::hash<int>()(id.x ^ (id.y << 4));
+    while (!open_set.empty()) {
+        int current = open_set.front();
+        open_set.pop();
+
+        if (current == goal) {
+            return reconstructPath(came_from, current, init);
         }
-    };
-}
 
-struct SquareGrid {
-    static 
-}
+        for (std::vector<pair<int, double>>::iterator it = graph[current].begin() ; it != graph[current].end(); ++it) {
+            pair<int, double> neighbor = *it;
+            int neighbor_id = neighbor.first;
 
-void bfs(Graph graph, char start) {
-    std::queue<char> frontier;
-    frontier.push(start);
-
-    std::unordered_set<char> reached;
-    reached.insert(start);
-
-    while (!frontier.empty()) {
-        char current = frontier.front();
-        frontier.pop();
-
-        std::cout << "Visiting " << current << '\n';
-        for (char next : graph.neighbors(current)) {
-            if (reached.find(next) == reached.end()) {
-                frontier.push(next);
-                reached.insert(next);
+            if (closed_set[neighbor_id] == false) {
+                open_set.push(neighbor_id);
+                came_from[neighbor_id] = current;
+                closed_set[neighbor_id] = true;
             }
         }
     }
 }
 
-int main() {
-    Graph graph {{
-        {'A', {'B'}},
-        {'B', {'C'}},
-        {'C', {'B', 'D', 'F'}},
-        {'D', {'C', 'E'}},
-        {'E', {'F'}},
-        {'F', {}},
-    }};
-    std::cout << "Reachable from A: \n";
-    bfs(graph, 'A');
-    std::cout << "Reachable from E:\n";
-    bfs(graph, 'E');
+
+stack<int> BFS::reconstructPath(vector<int> came_from, int current, int init) {
+    stack<int> path;
+    path.push(current);
+
+    while (current != init) {
+        current = came_from[current];
+        path.push(current);
+    }
+    return path;
 }

@@ -17,7 +17,5 @@ public:
     stack<int> findPath(int, int, int, Eigen::Vector3d[], vector<pair<int, double>>[]);
     double heuristic(Eigen::Vector3d a, Eigen::Vector3d b);
     stack<int> reconstructPath(vector<int> came_from, int current, int);
-    bool find(int neighbor);
 private:
-    vector<int> visited_nodes;
 };

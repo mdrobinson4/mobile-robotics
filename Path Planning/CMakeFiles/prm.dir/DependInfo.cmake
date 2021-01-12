@@ -4,7 +4,9 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
-  "/home/mialbro/Desktop/mobile-robotics/Path Planning/a_star.cpp" "/home/mialbro/Desktop/mobile-robotics/Path Planning/CMakeFiles/prm.dir/a_star.cpp.o"
+  "/home/mialbro/Desktop/mobile-robotics/Path Planning/astar.cpp" "/home/mialbro/Desktop/mobile-robotics/Path Planning/CMakeFiles/prm.dir/astar.cpp.o"
+  "/home/mialbro/Desktop/mobile-robotics/Path Planning/bfs.cpp" "/home/mialbro/Desktop/mobile-robotics/Path Planning/CMakeFiles/prm.dir/bfs.cpp.o"
+  "/home/mialbro/Desktop/mobile-robotics/Path Planning/dfs.cpp" "/home/mialbro/Desktop/mobile-robotics/Path Planning/CMakeFiles/prm.dir/dfs.cpp.o"
   "/home/mialbro/Desktop/mobile-robotics/Path Planning/dijkstra.cpp" "/home/mialbro/Desktop/mobile-robotics/Path Planning/CMakeFiles/prm.dir/dijkstra.cpp.o"
   "/home/mialbro/Desktop/mobile-robotics/Path Planning/main.cpp" "/home/mialbro/Desktop/mobile-robotics/Path Planning/CMakeFiles/prm.dir/main.cpp.o"
   "/home/mialbro/Desktop/mobile-robotics/Path Planning/map.cpp" "/home/mialbro/Desktop/mobile-robotics/Path Planning/CMakeFiles/prm.dir/map.cpp.o"
