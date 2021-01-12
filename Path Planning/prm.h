@@ -15,14 +15,16 @@
 
 #include "map.h"
 #include "dijkstra.h"
+#include "a_star.h"
 
 using namespace std;
 
-typedef priority_queue<pair<float, int>, vector<pair<float, int>>, greater<pair<float, int>>> MIN_QUEUE;
+typedef priority_queue<pair<double, int>, vector<pair<double, int>>, greater<pair<double, int>>> MIN_QUEUE;
 
 class PRM {
 private:
     class Dijkstra *dijkstra;
+    class ASTAR *astar;
     int n; // number of nodes to put in roadmap
     int k; // number of closest neighbors to examine for each configuration
     MAP *map;
@@ -33,7 +35,7 @@ private:
     int vector_cnt;
     Eigen::Vector3d *V;
     cv::Mat input_image;
-    vector<pair<int, float>> *graph;
+    vector<pair<int, double>> *graph;
 public:
     PRM(string, int, int);
     PRM(cv::Mat, int, int);
@@ -46,7 +48,7 @@ public:
 private:
     int addNode(Eigen::Vector3d);
     void removeNode(int);
-    void addEdge(int u_idx, int v_idx, float weight);
+    void addEdge(int u_idx, int v_idx, double weight);
     void connectNodes(Eigen::Vector3d q_init, Eigen::Vector3d q_goal);
     MIN_QUEUE nearestNeighbors(Eigen::Vector3d q);
     bool checkDuplicateEdge(int u, int v);

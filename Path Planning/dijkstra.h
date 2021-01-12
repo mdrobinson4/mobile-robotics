@@ -12,6 +12,6 @@
 using namespace std;
 class Dijkstra {
 public:
-    stack<int> findPath(int, int, int, vector<pair<int, float>> b[]);
+    stack<int> findPath(int, int, int, vector<pair<int, double>> b[]);
 private:
 };

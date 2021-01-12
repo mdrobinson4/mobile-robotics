@@ -30,15 +30,15 @@ bool MAP::isCollision(Eigen::Vector3d q) {
 }
 
 bool MAP::isCollision(Eigen::Vector3d pnt0, Eigen::Vector3d pnt1) {
-    int x1 = pnt0(0); int y1 = pnt0(1); float theta1 = pnt0(2);
-    int x2 = pnt1(0); int y2 = pnt1(1); float theta2 = pnt1(2);
+    int x1 = pnt0(0); int y1 = pnt0(1); double theta1 = pnt0(2);
+    int x2 = pnt1(0); int y2 = pnt1(1); double theta2 = pnt1(2);
 
     cv::LineIterator it(input_image, cv::Point(x1, y1), cv::Point(x2, y2), 8);
     for(int i = 0; i < it.count; i++, ++it) {
         cv::Point pt = it.pos();
-        float dot = x1*x2 + y1*y2; //      # dot product between [x1, y1] and [x2, y2]
-        float det = x1*y2 - y1*x2;  //    # determinant
-        float theta = atan2(det, dot);
+        double dot = x1*x2 + y1*y2; //      # dot product between [x1, y1] and [x2, y2]
+        double det = x1*y2 - y1*x2;  //    # determinant
+        double theta = atan2(det, dot);
         if (isCollision(Eigen::Vector3d(pt.x, pt.y, theta)) == true) {
           return true;
       } 

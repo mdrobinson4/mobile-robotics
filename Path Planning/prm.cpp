@@ -24,12 +24,14 @@ PRM::PRM(cv::Mat input_image, int n_, int k_) {
     map = new MAP(input_image);
 
     V = new Eigen::Vector3d[n + 2];
-    graph = new vector<pair<int, float>>[n + 2];
+    graph = new vector<pair<int, double>>[n + 2];
     dijkstra = new Dijkstra();
+    astar = new ASTAR();
 }
 
 void PRM::search() {
-    stack<int> path = dijkstra->findPath(init_idx, goal_idx, vector_cnt, graph);
+    //stack<int> path = dijkstra->findPath(init_idx, goal_idx, vector_cnt, graph);
+    stack<int> path = astar->findPath(init_idx, goal_idx, vector_cnt, V, graph);
     if (path.empty())
         return;
 
@@ -46,7 +48,7 @@ void PRM::search() {
 
 void PRM::constructRoadmap() {
     int x, y, cnt = 0;
-    float theta;
+    double theta;
     MIN_QUEUE qn;
     Eigen::Vector3d pos;
 
@@ -65,12 +67,12 @@ void PRM::constructRoadmap() {
     
     for (int i = 0; i < vector_cnt; i++) {
         int u_idx = i, v_idx = 0;
-        float weight;
+        double weight;
         int node_cnt = 0;
         qn = nearestNeighbors(V[i]);
 
         while (!qn.empty() && node_cnt < k) {
-            pair<float, int> node = qn.top();
+            pair<double, int> node = qn.top();
             qn.pop();
             v_idx = node.second;
             weight = node.first;
@@ -84,7 +86,7 @@ void PRM::constructRoadmap() {
 
 
 MIN_QUEUE PRM::nearestNeighbors(Eigen::Vector3d q) {
-    float dx, dy, dist = 0;
+    double dx, dy, dist = 0;
     MIN_QUEUE min_queue;
     for (int i = 0; i < n; i++) {
         if (q != V[i]) {
@@ -104,7 +106,7 @@ void PRM::removeNode(int u) {
     }
     else {
         V[u] = Eigen::Vector3d();
-        graph[u] = vector<pair<int, float>>();
+        graph[u] = vector<pair<int, double>>();
         vector_cnt -= 1;
     }
     graph[v].pop_back();
@@ -133,10 +135,10 @@ void PRM::setCoords(Eigen::Vector3d q_init, Eigen::Vector3d q_goal) {
 }
 
 int PRM::addNode(Eigen::Vector3d q_new) {
-    float dist;
+    double dist;
     Eigen::Vector3d q_curr;
     int u_idx; int v_idx; int dup_idx;
-    pair<int, float> curr_config;
+    pair<int, double> curr_config;
     MIN_QUEUE qn_new = nearestNeighbors(q_new); // configurations near init
     // add q_init to vector list
     dup_idx = checkDuplicateEdge(q_new);
@@ -163,7 +165,7 @@ int PRM::addNode(Eigen::Vector3d q_new) {
     return u_idx;
 }
 
-void PRM::addEdge(int u_idx, int v_idx, float weight) {
+void PRM::addEdge(int u_idx, int v_idx, double weight) {
     graph[u_idx].push_back(make_pair(v_idx, weight));
     graph[v_idx].push_back(make_pair(u_idx, weight));
 }
@@ -187,12 +189,12 @@ bool PRM::checkDuplicateEdge(int u, int v) {
 
     auto it_u = std::find_if(graph[u].begin(), 
                         graph[u].end(), 
-                        [&X_v](const pair<int, float>& p)
+                        [&X_v](const pair<int, double>& p)
                         {return p.first == X_v; });
 
     auto it_v = std::find_if(graph[v].begin(), 
                         graph[v].end(), 
-                        [&X_u](const pair<int, float>& p)
+                        [&X_u](const pair<int, double>& p)
                         {return p.first == X_u; });
 
     if (it_u == graph[u].end() && it_v == graph[v].end()) {

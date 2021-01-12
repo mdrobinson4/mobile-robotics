@@ -10,48 +10,76 @@
 
 using namespace std;
 
-stack<int> Dijkstra::findPath(int init, int goal, int cnt, Eigen::Vector3d> V[], vector<pair<int, float>> graph[]) {
-    priority_queue<pair<float, int>, vector<pair<float, int>>, greater<pair<float, int>>> pq;
-    vector<double> dist(cnt);
-    vector<int> prev(cnt);
+typedef priority_queue<pair<double, int>, vector<pair<double, int>>, greater<pair<double, int>>> MIN_QUEUE;
+
+ASTAR::ASTAR() {
+    visited_nodes.reserve(1);
+    return;
+}
+
+stack<int> ASTAR::findPath(int init, int goal, int cnt, Eigen::Vector3d V[], vector<pair<int, double>> graph[]) {
+    MIN_QUEUE open_set;
+    vector<int> closed_set(cnt);
+    vector<int> came_from(cnt);
+    vector<double> g_score(cnt, numeric_limits<double>::max());
+    vector<double> f_score(cnt, numeric_limits<double>::max());
+
+    g_score[init] = 0;
+    f_score[init] = g_score[init] + heuristic(V[init], V[goal]);
+    open_set.push(make_pair(0, init));
+
+    while (!open_set.empty()) {
+        int current = open_set.top().second;
+        open_set.pop();
+        if (current == goal) {
+            return reconstructPath(came_from, current, init);
+        }
+        for (std::vector<pair<int, double>>::iterator it = graph[current].begin() ; it != graph[current].end(); ++it) {
+            pair<int, double> neighbor = *it;
+            double new_score = g_score[current] + neighbor.second;
+            if (new_score < g_score[neighbor.first]) {
+                came_from[neighbor.first] = current;
+                g_score[neighbor.first] = new_score;
+                f_score[neighbor.first] = g_score[neighbor.first] + heuristic(V[neighbor.first], V[goal]);
+                if (!find(neighbor.first)) {
+                    cout << neighbor.first << endl;
+                    open_set.push(make_pair(f_score[neighbor.first], neighbor.second));
+                    visited_nodes.push_back(neighbor.first);
+                }
+            }
+        }
+    }
+}
+
+double ASTAR::heuristic(Eigen::Vector3d a, Eigen::Vector3d b) {
+    double dx, dy, dist = 0.0;
+    dx = abs(a(0) - b(0));
+    dy = abs(a(1) - b(1));
+    dist = sqrt(pow(dx, 2) + pow(dy, 2));
+    return dist;
+}
+
+stack<int> ASTAR::reconstructPath(vector<int> came_from, int current, int init) {
     stack<int> path;
+    path.push(current);
 
-    vector<bool> done(cnt, false);
-    
-    for (int i = 0; i < cnt; i++) {
-        dist[i] = numeric_limits<float>::max();
-        prev[i] = -1;
+    while (current != init) {
+        current = came_from[current];
+        path.push(current);
     }
+    return path;
+}
 
-    pq.push(make_pair(0, init));
-    dist[init] = 0;
-
-    while (!pq.empty()) {
-        int u = pq.top().second;
-        pq.pop();
-
-        if (u == goal) {
-            cout << "found goal" << endl;
-
-            while (u != -1) {
-                path.push(u); 
-                u = prev[u]; 
-            }
-            return path;
-        }
-
-        vector<pair<int, float>>::iterator it;
-        for (it = graph[u].begin(); it != graph[u].end(); it++) {
-            int v = (*it).first;
-            float weight = (*it).second;
-            if (dist[v] > dist[u] + weight) {
-                dist[v] = dist[u] + weight;
-                prev[v] = u;
-                pq.push(make_pair(dist[v], v));
-            }
-            
-        }
-        done[u] == true;
+bool ASTAR::find(int neighbor) {
+    vector<int>::iterator it;
+    if (visited_nodes.size() == 0) {
+        cout << "neighbor.first" << endl;
+        return false;
     }
-    return stack<int> ();
+    it = std::find(visited_nodes.begin(), visited_nodes.end(), neighbor);
+
+    if (it != visited_nodes.end()) {
+        return true;
+    }
+    return false;
 }
