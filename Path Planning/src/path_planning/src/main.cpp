@@ -15,7 +15,7 @@ int main() {
     int n = 2000;
     int k = 10;
 
-    string path("../maps/map3.jpg");
+    string path("map3.jpg");
     cv::Mat input_image = cv::imread(path);
     Eigen::Vector3d q_init(203, 430, 0);
     Eigen::Vector3d q_goal(1306, 69, 0);
