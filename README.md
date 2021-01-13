@@ -4,25 +4,19 @@ Library containing implementation of mobile robotic algorithms for autonomous na
 - [ ] Filtering
   - [x] Kalman Filter
   - [x] Extended Kalman Filter
+  - [ ] Particle Filter
   - [ ] Unscented Kalman Filter
-- [ ] Road Maps
-  - [ ] Probabilistic Road Maps (PRM)
-  - [ ] Randomly Exploring Random Trees (RRT)
-- [ ] Global Path Planning
+- [ ] Path Planning
+  - [ ] Roadmap Generation
+    - [ ] Probabilistic Road Maps (PRM)
+    - [ ] Randomly Exploring Random Trees (RRT)
   - [ ] Graph Search
-    - [ ] A*
-    - [ ] Modified A*
-    - [ ] Dijkstra's Algorithm
-    - [ ] Depth First Search (DFS)
-    - [ ] Breadth First Search (BFS)
-  - [ ] Biological
+    - [x] A*
+    - [x] Dijkstra's Algorithm
+    - [x] Depth First Search (DFS)
+    - [x] Breadth First Search (BFS)
     - [ ] Genetic Algorithm (GA)
     - [ ] Ant Colony Algorithm (ACO)
-- [ ] Local Path Planning
-  - [ ] Simulated Annealing (SA)
-  - [ ] Artificial Potential Field method
-  - [ ] PointBug2
-  - [ ] Fuzzy Logic Algorithm
 - [ ] Trajectory generation
 - [ ] Visual Odometry
  
