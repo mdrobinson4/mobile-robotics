@@ -17,7 +17,7 @@
 using namespace std;
 
 int main() {
-    int n = 2000;
+    int n = 1000;
     int k = 10;
 
     string path("../map3.jpg");

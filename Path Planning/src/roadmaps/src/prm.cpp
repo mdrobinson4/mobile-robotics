@@ -34,9 +34,9 @@ PRM::PRM(cv::Mat input_image, int n_, int k_) {
 
 void PRM::search() {
     //stack<int> path = dijkstra->findPath(init_idx, goal_idx, vector_cnt, graph);
-    //stack<int> path = astar->findPath(init_idx, goal_idx, vector_cnt, V, graph);
+    stack<int> path = astar->findPath(init_idx, goal_idx, vector_cnt, V, graph);
     //stack<int> path = bfs->findPath(init_idx, goal_idx, vector_cnt, graph);
-    stack<int> path = dfs->findPath(init_idx, goal_idx, vector_cnt, graph);
+    //stack<int> path = dfs->findPath(init_idx, goal_idx, vector_cnt, graph);
     if (path.empty())
         return;
 
