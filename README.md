@@ -5,10 +5,9 @@ Library containing implementation of mobile robotic algorithms for autonomous na
   - [x] Kalman Filter
   - [x] Extended Kalman Filter
   - [ ] Particle Filter
-  - [ ] Unscented Kalman Filter
 - [ ] Path Planning
   - [ ] Roadmap Generation
-    - [ ] Probabilistic Road Maps (PRM)
+    - [x] Probabilistic Road Maps (PRM)
     - [ ] Randomly Exploring Random Trees (RRT)
   - [ ] Graph Search
     - [x] A*
