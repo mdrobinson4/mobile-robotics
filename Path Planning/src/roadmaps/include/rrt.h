@@ -36,10 +36,10 @@ private:
     int height;
     int init_idx;
     int goal_idx;
-    int vector_cnt;
-    Eigen::Vector3d *V;
+    int node_cnt;
     cv::Mat input_image;
-    vector<pair<int, double>> *graph;
+    vector<Eigen::Vector3d> configs;
+    vector<vector<pair<int, double>>> graph;
 public:
     RRT(string, int, int);
     RRT(cv::Mat, int, int);

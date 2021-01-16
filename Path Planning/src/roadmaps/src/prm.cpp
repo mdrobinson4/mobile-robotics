@@ -33,10 +33,11 @@ PRM::PRM(cv::Mat input_image, int n_, int k_) {
 }
 
 void PRM::search() {
+    double dx, dy, theta = 0;
     //stack<int> path = dijkstra->findPath(init_idx, goal_idx, vector_cnt, graph);
-    stack<int> path = astar->findPath(init_idx, goal_idx, vector_cnt, V, graph);
+    //stack<int> path = astar->findPath(init_idx, goal_idx, vector_cnt, V, graph);
     //stack<int> path = bfs->findPath(init_idx, goal_idx, vector_cnt, graph);
-    //stack<int> path = dfs->findPath(init_idx, goal_idx, vector_cnt, graph);
+    stack<int> path = dfs->findPath(init_idx, goal_idx, vector_cnt, graph);
     if (path.empty())
         return;
 
@@ -44,6 +45,10 @@ void PRM::search() {
     path.pop();
     while (!path.empty()) {
         Eigen::Vector3d pnt2 = V[path.top()];
+        dx = pnt2(0) - pnt1(0);
+        dy = pnt2(1) - pnt1(1);
+        theta = atan(dy / dx);
+        pnt2(3) = theta;
         map->updateMap(pnt1, pnt2);
         path.pop();
         pnt1 = pnt2;
@@ -53,6 +58,7 @@ void PRM::search() {
 
 void PRM::constructRoadmap() {
     int x, y, cnt = 0;
+    double dx, dy = 0.0;
     double theta;
     MIN_QUEUE qn;
     Eigen::Vector3d pos;
@@ -60,7 +66,8 @@ void PRM::constructRoadmap() {
     while (vector_cnt < n) {
         x = rand() % width;
         y = rand() % height;
-        theta = rand() % 360 - 1;
+        theta = -1;
+
         pos = Eigen::Vector3d(x, y, theta);
 
         if (!map->isCollision(pos) && checkDuplicateEdge(pos) == -1) {
@@ -88,7 +95,6 @@ void PRM::constructRoadmap() {
         }
     }
 }
-
 
 MIN_QUEUE PRM::nearestNeighbors(Eigen::Vector3d q) {
     double dx, dy, dist = 0;

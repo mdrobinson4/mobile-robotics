@@ -13,61 +13,85 @@
 using namespace std;
 
 RRT::RRT(cv::Mat input_image, int n_, int k_) {
-    init_idx = -1;
-    goal_idx = -1;
     n = n_; // number of nodes to initialize
     k = k_; // number of neighbors
-    vector_cnt = 0;
     
-    width = input_image.cols - 1; // x
-    height = input_image.rows - 1; // y
+    width = input_image.cols - 1;
+    height = input_image.rows - 1;
     map = new MAP(input_image);
 
-    V = new Eigen::Vector3d[n + 2];
-    graph = new vector<pair<int, double>>[n + 2];
+    configs.reserve(k);
+    graph.reserve(k);
 
-    dijkstra = new Dijkstra();
-    astar = new ASTAR();
-    bfs = new BFS();
-    dfs = new DFS();
+    init_node = -1;
+    init_goal = -1;
+    node_cnt = 0;
 }
 
-void RRT::constructRoadmap(Eigen::Vector3d, Eigen::Vector3d {
-    int x, y, cnt = 0;
-    double theta;
-    MIN_QUEUE qn;
-    Eigen::Vector3d pos;
-
-    while (vector_cnt < n) {
-        x = rand() % width;
-        y = rand() % height;
-        theta = rand() % 360 - 1;
-        pos = Eigen::Vector3d(x, y, theta);
-
-        if (!map->isCollision(pos) && checkDuplicateEdge(pos) == -1) {
-            V[vector_cnt] = pos;
-            vector_cnt += 1;
-        }
-        cnt += 1;
-    }
+void RRT::buildRRT(Eigen::Vector3d init, Eigen::Vector3d goal) {
+    Eigen::Vector3d q_rand, q_new, q_near;
+    init_node = 0;
+    configs[init_node] = init;
+    node_cnt = 1;
     
-    for (int i = 0; i < vector_cnt; i++) {
-        int u_idx = i, v_idx = 0;
-        double weight;
-        int node_cnt = 0;
-        qn = nearestNeighbors(V[i]);
-
-        while (!qn.empty() && node_cnt < k) {
-            pair<double, int> node = qn.top();
-            qn.pop();
-            v_idx = node.second;
-            weight = node.first;
-            if (!checkDuplicateEdge(u_idx, v_idx) && !map->isCollision(V[u_idx], V[v_idx])) {
-                addEdge(u_idx, v_idx, weight);
-                node_cnt += 1;
-            }
+    while (node_cnt < k) {
+        q_rand = randConfig();
+        if (q_rand(0) != - 1 && q_rand(1) != -1 && q_rand(2) != -1) {
+            extend(q_rand);
         }
     }
+}
+
+void RRT::extend(Eigen::Vector3d q_rand) {
+    q_near = nearestNeighbor(q_rand);
+    q_new = newConfig(q_near, q_rand);
+
+    if (!map->isCollision(q_near, q_new)) {
+        addNode(q_new);
+        addEdge(q_near, q_new);
+        node_cnt += 1;
+    }
+}
+
+Eigen::Vector3d RRT::randConfig() {
+    double x, y, theta = 0;
+    Eigen::Vector3d q;
+
+    x = rand() % width;
+    y = rand() % height;
+    theta = -1;
+
+    q = Eigen::Vector(x, y, theta);
+    if (map->isCollision(q) == false) {
+        return q;
+    } 
+    else {
+        return Eigen::Vector3d(-1, -1, -1);
+    }
+}
+
+int RRT::nearestNeighbor(Eigen::Vector3d q) {
+    double dist = 0.0;
+    MIN_QUEUE min_queue;
+    for (int i = 0; i < n; i++) {
+        if (q != configs[i]) {
+            dist = computeDistance(q, configs[i]);
+            min_queue.push(make_pair(dist, i));
+        }
+    }
+    return min_queue.top().second();
+}
+
+double RRT::computeDistance(Eigen::Vector3d q0 Eigen::Vector3d q1) {
+    double dx, dy, dist = 0.0;
+    dx = abs(q0(0) - q1(0));
+    dy = abs(q0(1) - q1(1));
+    dist = sqrt(pow(dx, 2) + pow(dy, 2));
+    return dist;
+}
+
+Eigen::Vector3d newConfig(Eigen::Vector3d q_near, Eigen::Vector3d q_rand) {
+
 }
 
 void RRT::search() {
@@ -90,95 +114,13 @@ void RRT::search() {
     cv::waitKey(0);
 }
 
-
-
-MIN_QUEUE RRT::nearestNeighbors(Eigen::Vector3d q) {
-    double dx, dy, dist = 0;
-    MIN_QUEUE min_queue;
-    for (int i = 0; i < n; i++) {
-        if (q != V[i]) {
-            dx = abs(q(0) - V[i](0));
-            dy = abs(q(1) - V[i](1));
-            dist = sqrt(pow(dx, 2) + pow(dy, 2));
-            min_queue.push(make_pair(dist, i));
-        }
-    }
-    return min_queue;
-}
-
-void RRT::removeNode(int u) {
-    int v = graph[u].back().first;
-    if (u < n) { // start node already existed in graph
-        graph[u].pop_back();
-    }
-    else {
-        V[u] = Eigen::Vector3d();
-        graph[u] = vector<pair<int, double>>();
-        vector_cnt -= 1;
-    }
-    graph[v].pop_back();
-}
-
-
-void RRT::setCoords(Eigen::Vector3d q_init, Eigen::Vector3d q_goal) {
-    if (q_init(0) >= width || q_init(1) >= height || q_goal(0) >= width || q_goal(1) >= height) {
-        cout << "outside map dimensions" << endl;
-        return;
-    }
-    if (init_idx >= 0) {
-        removeNode(init_idx);
-        removeNode(goal_idx);
-    }
-    init_idx = addNode(q_init);
-    if (init_idx == -1) {
-        cout << "element not added" << endl;
-        return;
-    }
-    goal_idx = addNode(q_goal);
-    if (goal_idx == -1) {
-        cout << "element not added" << endl;
-        removeNode(goal_idx);
-    }
-}
-
-int RRT::addNode(Eigen::Vector3d q_new) {
-    double dist;
-    Eigen::Vector3d q_curr;
-    int u_idx; int v_idx; int dup_idx;
-    pair<int, double> curr_config;
-    MIN_QUEUE qn_new = nearestNeighbors(q_new); // configurations near init
-    // add q_init to vector list
-    dup_idx = checkDuplicateEdge(q_new);
-    if (dup_idx == -1) {
-        u_idx = vector_cnt;
-        int node_cnt = 0;
-        while (!qn_new.empty() && node_cnt < k) {
-            v_idx = qn_new.top().second;
-            dist = qn_new.top().first;
-            qn_new.pop();
-            q_curr = V[v_idx];
-
-            if (!map->isCollision(q_new, q_curr)) {
-                V[u_idx] = q_new;
-                addEdge(u_idx, v_idx, dist);
-                vector_cnt++;
-                node_cnt += 1;
-                break;
-            }
-        }
-    }
-    else
-        u_idx = dup_idx;
-    return u_idx;
-}
-
 void RRT::addEdge(int u_idx, int v_idx, double weight) {
     graph[u_idx].push_back(make_pair(v_idx, weight));
     graph[v_idx].push_back(make_pair(u_idx, weight));
 }
 
 int RRT::checkDuplicateEdge(Eigen::Vector3d pos) {
-    for (int i = 0; i < vector_cnt; i++) {
+    for (int i = 0; i < node_cnt; i++) {
         if (pos == (V[i])) {
             return i;
         }
@@ -210,25 +152,6 @@ bool RRT::checkDuplicateEdge(int u, int v) {
     else {
         return true; // new entry
     }
-}
-
-bool RRT::bresenham(int x1, int y1, int x2, int y2) {
-   int m_new = 2 * (y2 - y1); 
-   int slope_error_new = m_new - (x2 - x1); 
-   for (int x = x1, y = y1; x <= x2; x++) {
-      if (map->isCollision(Eigen::Vector3d(x, y, 0)) == true) {
-          return true;
-      } 
-      slope_error_new += m_new; 
-      if (slope_error_new >= 0) { 
-         y++; 
-         slope_error_new  -= 2 * (x2 - x1); 
-      } 
-      if (map->isCollision(Eigen::Vector3d(x, y, 0)) == true) {
-          return true;
-      } 
-   }
-   return false;
 }
 
 void RRT::drawMap() {
