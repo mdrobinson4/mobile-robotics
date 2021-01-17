@@ -1,3 +1,6 @@
+#ifndef DFS_H
+#define DFS_H
+
 #include <iostream>
 #include <vector>
 #include <unordered_map>
@@ -22,3 +25,4 @@ private:
     int goal;
     vector<pair<int, double>> *graph;
 };
+#endif

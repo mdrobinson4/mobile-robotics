@@ -1,3 +1,6 @@
+#ifndef MAP_H
+#define MAP_H
+
 #include <iostream>
 #include <vector>
 #include <unordered_map>
@@ -28,3 +31,5 @@ public:
     bool isCollision(Eigen::Vector3d, Eigen::Vector3d);
     ~MAP();
 };
+
+#endif

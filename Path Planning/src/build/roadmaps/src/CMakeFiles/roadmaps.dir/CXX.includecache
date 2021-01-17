@@ -108,7 +108,7 @@ Eigen/Dense
 Eigen/Core
 -
 
-../roadmaps/include/prm.h
+../roadmaps/include/rrt.h
 iostream
 -
 vector
@@ -144,25 +144,7 @@ bfs.h
 dfs.h
 ../roadmaps/include/dfs.h
 
-/home/mialbro/Desktop/mobile-robotics/Path Planning/src/roadmaps/src/map.cpp
-iostream
--
-vector
--
-unordered_map
--
-queue
--
-unordered_set
--
-opencv2/opencv.hpp
--
-opencv2/imgproc.hpp
--
-map.h
-/home/mialbro/Desktop/mobile-robotics/Path Planning/src/roadmaps/src/map.h
-
-/home/mialbro/Desktop/mobile-robotics/Path Planning/src/roadmaps/src/prm.cpp
+/home/mialbro/Desktop/mobile-robotics/Path Planning/src/roadmaps/src/rrt.cpp
 iostream
 -
 vector
@@ -179,8 +161,8 @@ opencv2/opencv.hpp
 -
 opencv2/imgproc.hpp
 -
-prm.h
-/home/mialbro/Desktop/mobile-robotics/Path Planning/src/roadmaps/src/prm.h
+rrt.h
+/home/mialbro/Desktop/mobile-robotics/Path Planning/src/roadmaps/src/rrt.h
 
 /home/mialbro/opencv_build/opencv/build/cv_cpu_config.h
 

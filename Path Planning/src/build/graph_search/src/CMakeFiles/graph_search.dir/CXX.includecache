@@ -46,26 +46,6 @@ Eigen/Dense
 Eigen/Core
 -
 
-../graph_search/include/dfs.h
-iostream
--
-vector
--
-unordered_map
--
-queue
--
-unordered_set
--
-stack
--
-Eigen/Geometry
--
-Eigen/Dense
--
-Eigen/Core
--
-
 ../graph_search/include/dijkstra.h
 iostream
 -
@@ -121,24 +101,6 @@ limits
 -
 bfs.h
 /home/mialbro/Desktop/mobile-robotics/Path Planning/src/graph_search/src/bfs.h
-
-/home/mialbro/Desktop/mobile-robotics/Path Planning/src/graph_search/src/dfs.cpp
-iostream
--
-vector
--
-unordered_map
--
-queue
--
-unordered_set
--
-inttypes.h
--
-limits
--
-dfs.h
-/home/mialbro/Desktop/mobile-robotics/Path Planning/src/graph_search/src/dfs.h
 
 /home/mialbro/Desktop/mobile-robotics/Path Planning/src/graph_search/src/dijkstra.cpp
 iostream

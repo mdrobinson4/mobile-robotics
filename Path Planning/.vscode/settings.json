@@ -60,6 +60,12 @@
         "thread": "cpp",
         "cfenv": "cpp",
         "cinttypes": "cpp",
-        "typeinfo": "cpp"
+        "typeinfo": "cpp",
+        "queue": "cpp",
+        "condition_variable": "cpp",
+        "mutex": "cpp",
+        "typeindex": "cpp",
+        "bit": "cpp",
+        "variant": "cpp"
     }
 }

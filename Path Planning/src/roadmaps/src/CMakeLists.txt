@@ -13,6 +13,6 @@ include_directories(
     ${EIGEN3_INCLUDE_DIR}
 )
 
-add_library(roadmaps map.cpp prm.cpp)
+add_library(roadmaps map.cpp rrt.cpp prm.cpp)
 
 target_link_libraries(roadmaps ${OpenCV_LIBS})

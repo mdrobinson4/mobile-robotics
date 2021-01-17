@@ -12,7 +12,7 @@
 #include <opencv2/imgproc.hpp>
 
 #include "prm.h"
-//#include "rrt.h"
+#include "rrt.h"
 
 using namespace std;
 

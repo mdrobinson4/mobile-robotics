@@ -1,3 +1,6 @@
+#ifndef ASTAR_H
+#define ASTAR_H
+
 #include <iostream>
 #include <vector>
 #include <unordered_map>
@@ -19,3 +22,4 @@ public:
     stack<int> reconstructPath(vector<int> came_from, int current, int);
 private:
 };
+#endif

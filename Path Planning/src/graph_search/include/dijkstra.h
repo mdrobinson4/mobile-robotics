@@ -1,3 +1,6 @@
+#ifndef DIJKSTRA_H
+#define DIJKSTRA_H
+
 #include <iostream>
 #include <vector>
 #include <unordered_map>
@@ -15,3 +18,5 @@ public:
     stack<int> findPath(int, int, int, vector<pair<int, double>> b[]);
 private:
 };
+
+#endif

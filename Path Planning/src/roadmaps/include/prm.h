@@ -1,3 +1,6 @@
+#ifndef PRM_H
+#define PRM_H
+
 #include <iostream>
 #include <vector>
 #include <unordered_map>
@@ -59,3 +62,5 @@ private:
     int checkDuplicateEdge(Eigen::Vector3d);
     bool bresenham(int x1, int y1, int x2, int y2);
 };
+
+#endif

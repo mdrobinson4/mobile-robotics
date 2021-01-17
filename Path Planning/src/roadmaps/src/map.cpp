@@ -25,8 +25,8 @@ bool MAP::isCollision(Eigen::Vector3d q) {
 
     if (val == 255) // no collision = white
         return false;
-    else if (val == 0) // collision = black
-        return true;
+    // collision = black
+    return true;
 }
 
 bool MAP::isCollision(Eigen::Vector3d pnt0, Eigen::Vector3d pnt1) {

@@ -1,3 +1,6 @@
+#ifndef BFS_H
+#define BFS_H
+
 #include <iostream>
 #include <vector>
 #include <unordered_map>
@@ -18,3 +21,5 @@ public:
     stack<int> reconstructPath(vector<int> came_from, int current, int);
 private:
 };
+
+#endif

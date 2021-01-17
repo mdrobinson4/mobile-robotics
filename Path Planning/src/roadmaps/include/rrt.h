@@ -1,3 +1,6 @@
+#ifndef RRT_H
+#define RRT_H
+
 #include <iostream>
 #include <vector>
 #include <unordered_map>
@@ -34,27 +37,31 @@ private:
     MAP *map;
     int width;
     int height;
-    int init_idx;
-    int goal_idx;
     int node_cnt;
+    double step_size;
+    bool found_path;
+    int init_node;
+    int goal_node;
     cv::Mat input_image;
-    vector<Eigen::Vector3d> configs;
-    vector<vector<pair<int, double>>> graph;
+    Eigen::Vector3d *configs;
+    vector<pair<int, double>> *graph;
 public:
+    RRT(cv::Mat, double, int, int);
     RRT(string, int, int);
-    RRT(cv::Mat, int, int);
     ~RRT();
     void search();
-    void clearCoords();
+    void buildRRT(Eigen::Vector3d, Eigen::Vector3d);
     void drawMap();
-    void constructRoadmap(Eigen::Vector3d, Eigen::Vector3d);
+    void clearCoords();
 private:
-    int addNode(Eigen::Vector3d);
-    void removeNode(int);
-    void addEdge(int u_idx, int v_idx, double weight);
-    void connectNodes(Eigen::Vector3d q_init, Eigen::Vector3d q_goal);
-    MIN_QUEUE nearestNeighbors(Eigen::Vector3d q);
-    bool checkDuplicateEdge(int u, int v);
+    bool extend(Eigen::Vector3d);
+    Eigen::Vector3d randConfig();
+    Eigen::Vector3d newConfig(Eigen::Vector3d, Eigen::Vector3d);
+    int nearestNeighbor(Eigen::Vector3d);
+    double computeDistance(Eigen::Vector3d, Eigen::Vector3d);
+    void addNode(Eigen::Vector3d);
+    void addEdge(int, int, double);
     int checkDuplicateEdge(Eigen::Vector3d);
-    bool bresenham(int x1, int y1, int x2, int y2);
 };
+
+#endif

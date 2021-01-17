@@ -12,6 +12,8 @@ MESSAGE("Eigen Version: ${Eigen3_VERSION}")
 
 find_package(OpenCV 4.5.1 REQUIRED)
 
+MESSAGE("OpenCV Version: ${OpenCV_VERSION}")
+
 include_directories(
     ${OpenCV_INCLUDE_DIRS}
     ${EIGEN3_INCLUDE_DIR}
@@ -20,6 +22,6 @@ include_directories(
 # The following folder will be included
 include_directories("${PROJECT_SOURCE_DIR}")
 
-add_executable(path_planning prm.cpp map.cpp dijkstra.cpp astar.cpp bfs.cpp dfs.cpp main.cpp)
+add_executable(path_planning prm.cpp rrt.cpp map.cpp dijkstra.cpp astar.cpp bfs.cpp dfs.cpp main.cpp)
 
 target_link_libraries(path_planning ${OpenCV_LIBS})

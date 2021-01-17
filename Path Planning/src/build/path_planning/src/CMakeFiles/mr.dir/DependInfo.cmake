@@ -11,6 +11,9 @@ set(CMAKE_CXX_COMPILER_ID "GNU")
 # The include file search paths:
 set(CMAKE_CXX_TARGET_INCLUDE_PATH
   "/usr/local/include/eigen3"
+  "../path_planning/include"
+  "../graph_search/include"
+  "../roadmaps/include"
   "/home/mialbro/opencv_build/opencv/build"
   "/home/mialbro/opencv_build/opencv/include"
   "/home/mialbro/opencv_build/opencv/modules/core/include"
@@ -68,9 +71,6 @@ set(CMAKE_CXX_TARGET_INCLUDE_PATH
   "/home/mialbro/opencv_build/opencv_contrib/modules/superres/include"
   "/home/mialbro/opencv_build/opencv_contrib/modules/tracking/include"
   "/home/mialbro/opencv_build/opencv_contrib/modules/stereo/include"
-  "../path_planning/include"
-  "../graph_search/include"
-  "../roadmaps/include"
   )
 
 # Targets to which this target links.
