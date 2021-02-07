@@ -1,0 +1,18 @@
+{
+    "files.associations": {
+        "unordered_map": "cpp",
+        "vector": "cpp",
+        "ios": "cpp",
+        "core": "cpp",
+        "*.ipp": "cpp",
+        "hash_map": "cpp",
+        "hash_set": "cpp",
+        "*.tcc": "cpp",
+        "deque": "cpp",
+        "list": "cpp",
+        "string": "cpp",
+        "unordered_set": "cpp",
+        "system_error": "cpp",
+        "ostream": "cpp"
+    }
+}

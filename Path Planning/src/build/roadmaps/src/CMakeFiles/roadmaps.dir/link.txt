@@ -1,2 +1,0 @@
-/usr/bin/ar qc libroadmaps.a  CMakeFiles/roadmaps.dir/map.cpp.o CMakeFiles/roadmaps.dir/rrt.cpp.o CMakeFiles/roadmaps.dir/prm.cpp.o
-/usr/bin/ranlib libroadmaps.a

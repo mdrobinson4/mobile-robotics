@@ -1,0 +1,2 @@
+slam
+-DCATKIN_DEVEL_PREFIX=/home/mialbro/Desktop/mobile-robotics/ros/devel -DCMAKE_INSTALL_PREFIX=/home/mialbro/Desktop/mobile-robotics/ros/install -G Unix Makefiles

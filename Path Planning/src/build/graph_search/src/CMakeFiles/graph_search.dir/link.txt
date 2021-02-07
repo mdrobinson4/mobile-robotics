@@ -1,2 +1,0 @@
-/usr/bin/ar qc libgraph_search.a  CMakeFiles/graph_search.dir/dfs.cpp.o CMakeFiles/graph_search.dir/bfs.cpp.o CMakeFiles/graph_search.dir/dijkstra.cpp.o CMakeFiles/graph_search.dir/astar.cpp.o
-/usr/bin/ranlib libgraph_search.a
