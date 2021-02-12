@@ -21,10 +21,13 @@ class MAP
 private:
     cv::Mat input_image;
     cv::Mat modInput;
+    int height, width;
 public:
     MAP(cv::Mat input);
     void clear();
     int getCell(int u, int v);
+    int getWidth();
+    int getHeight();
     void updateMap(Eigen::Vector3d, Eigen::Vector3d);
     void updateMap(Eigen::Vector3d);
     bool isCollision(Eigen::Vector3d);

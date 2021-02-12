@@ -17,17 +17,16 @@
 using namespace std;
 
 int main() {
-    int n = 100;
-    int k = 10;
-    double step_size = 10;
+    int node_cnt = 100;
+    double step_size = 1;
 
     string path("../map3.jpg");
     cv::Mat input_image = cv::imread(path);
     Eigen::Vector3d q_init(203, 430, 0);
     Eigen::Vector3d q_goal(1306, 69, 0);
 
-    RRT *rrt = new RRT(input_image, 10, n, k);
-    rrt->buildRRT(q_init, q_goal);
+    RRT *rrt = new RRT(input_image);
+    rrt->buildRRT(q_init, q_goal, step_size, node_cnt);
     /*
     PRM *prm = new PRM(input_image, n, k);
     prm->constructRoadmap();

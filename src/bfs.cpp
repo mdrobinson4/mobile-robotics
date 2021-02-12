@@ -42,6 +42,7 @@ stack<int> BFS::findPath(int init, int goal, int cnt, vector<pair<int, double>> 
             }
         }
     }
+    return std::stack<int>();
 }
 
 

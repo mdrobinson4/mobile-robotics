@@ -17,7 +17,7 @@ class ASTAR {
 public:
     ASTAR();
     ~ASTAR();
-    stack<int> findPath(int, int, int, Eigen::Vector3d[], vector<pair<int, double>>[]);
+    stack<int> findPath(int, int, int, std::vector<Eigen::Vector3d>, vector<pair<int, double>>[]);
     double heuristic(Eigen::Vector3d a, Eigen::Vector3d b);
     stack<int> reconstructPath(vector<int> came_from, int current, int);
 private:

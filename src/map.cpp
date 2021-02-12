@@ -17,7 +17,17 @@ MAP::MAP(cv::Mat input_)
     cv::cvtColor(input_, input_gray, cv::COLOR_BGR2GRAY);
     threshold(input_gray, input_image, 150, 255, cv::THRESH_BINARY);
     modInput = input_image.clone();
+    height = input_image.rows - 1;
+    width = input_image.cols - 1;
     return;
+}
+
+int MAP::getHeight() {
+    return height;
+}
+
+int MAP::getWidth() {
+    return width;
 }
 
 bool MAP::isCollision(Eigen::Vector3d q) {

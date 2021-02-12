@@ -17,7 +17,7 @@ ASTAR::ASTAR() {
     return;
 }
 
-stack<int> ASTAR::findPath(int init, int goal, int cnt, Eigen::Vector3d V[], vector<pair<int, double>> graph[]) {
+stack<int> ASTAR::findPath(int init, int goal, int cnt, std::vector<Eigen::Vector3d> V, vector<pair<int, double>> graph[]) {
     MIN_QUEUE open_set;
     vector<bool> closed_set(cnt, false);
     vector<int> came_from(cnt);
@@ -49,6 +49,7 @@ stack<int> ASTAR::findPath(int init, int goal, int cnt, Eigen::Vector3d V[], vec
             }
         }
     }
+    return std::stack<int>();
 }
 
 double ASTAR::heuristic(Eigen::Vector3d a, Eigen::Vector3d b) {

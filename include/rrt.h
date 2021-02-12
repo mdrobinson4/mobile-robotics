@@ -32,29 +32,31 @@ private:
     class ASTAR *astar;
     class BFS *bfs;
     class DFS *dfs;
-    int n; // number of nodes to put in roadmap
-    int k; // number of closest neighbors to examine for each configuration
     MAP *map;
-    int width;
-    int height;
-    int node_cnt;
-    double step_size;
-    bool found_path;
     int init_node;
     int goal_node;
-    cv::Mat input_image;
-    Eigen::Vector3d *configs;
+    int init_id;
+    int goal_id;
+    std::vector<Eigen::Vector3d> configs;
     vector<pair<int, double>> *graph;
 public:
     RRT(cv::Mat, double, int, int);
     RRT(string, int, int);
     ~RRT();
-    void search();
-    void buildRRT(Eigen::Vector3d, Eigen::Vector3d);
     void drawMap();
     void clearCoords();
-private:
-    bool extend(Eigen::Vector3d);
+    RRT(cv::Mat input_image);
+    void buildRRT(Eigen::Vector3d, Eigen::Vector3d, int, int);
+    bool addPath(std::pair<int, Eigen::Vector3d>, std::pair<int, Eigen::Vector3d>);
+    bool addNode(Eigen::Vector3d, int);
+    void addEdge(int, int, double);
+    void nearestNeighbor(Eigen::Vector3d, std::pair<int, Eigen::Vector3d>&, int&);
+    Eigen::Vector3d randConfig();
+    double computeDistance(Eigen::Vector3d, Eigen::Vector3d);
+    Eigen::Vector3d newConfig(Eigen::Vector3d, Eigen::Vector3d, int);
+    void search();
+    int isDuplicateNode(Eigen::Vector3d);
+/*
     Eigen::Vector3d randConfig();
     Eigen::Vector3d newConfig(Eigen::Vector3d, Eigen::Vector3d);
     int nearestNeighbor(Eigen::Vector3d);
@@ -62,6 +64,7 @@ private:
     void addNode(Eigen::Vector3d);
     void addEdge(int, int, double);
     int checkDuplicateEdge(Eigen::Vector3d);
+*/
 };
 
 #endif
