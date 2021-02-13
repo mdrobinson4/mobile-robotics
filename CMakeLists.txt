@@ -9,8 +9,6 @@ find_package(OpenCV 4.5 REQUIRED)
 
 find_package(Eigen3 REQUIRED)
 
-MESSAGE("Include: ${PROJECT_SOURCE_DIR}")
-
 set(${PROJECT_INCLUDE_DIRS}
     ${PROJECT_SOURCE_DIR}/include
 )
